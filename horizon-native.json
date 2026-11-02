@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "id": "invisible_frames",
+  "version": "0.1.0",
+  "game": "26.3",
+  "horizon": "3db53df3bde39da07aabddec9a5fa850204fd32a",
+  "hooks": 139,
+  "mixins": "07dab17387480ac03829584d9d1ee9912c9bb515"
+}

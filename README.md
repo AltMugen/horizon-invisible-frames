@@ -34,3 +34,12 @@ python3 tools/build.py package
 The build exports the committed Horizon revision and applies the native mixins to
 a temporary source tree. It does not launch the game or read player saves.
 Development assisted by Codex.
+
+## 0.1.1 review correction
+
+Frame interactions read a per-UUID snapshot of the authoritative server guest's
+`sneaking` flag at `enter_guest`, before that player's state is swapped in.
+There is no physical keyboard check. Right Shift, rebound/controller sneak input,
+LAN and dedicated-player actions share this server input path. The snapshot is
+refreshed at every player turn, including interaction turns before a movement tick.
+No file/network access or new frame persistence format is introduced.

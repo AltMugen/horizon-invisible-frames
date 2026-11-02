@@ -7,7 +7,9 @@ fn toggle_frame(
 ) {
     if *claimed
         || !matches!(kind, "minecraft:item_frame" | "minecraft:glow_item_frame")
-        || !game.keys.contains(&winit::keyboard::KeyCode::ShiftLeft)
+        || !super::invisible_frames_sneak::is_sneaking(
+            game.native_acting_player().map(|p| p.uuid),
+        )
     {
         return;
     }

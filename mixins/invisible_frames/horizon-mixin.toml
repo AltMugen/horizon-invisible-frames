@@ -1,6 +1,6 @@
 [mod]
 id = "invisible_frames"
-version = "0.1.0"
+version = "0.1.1"
 priority = 100
 
 [compatibility]
@@ -19,3 +19,19 @@ kind = "HEAD"
 target = "horizon_client::game::native_hooks::Game<'_>::native_mods"
 helper = "list_hook.rs"
 bindings = [{ name = "mods", ty = "&mut Vec<crate::game::native_hooks::NativeMod>", value = "&mut *mods" }]
+
+[[module]]
+id = "acting-sneak"
+file = "crates/horizon-client/src/game.rs"
+name = "invisible_frames_sneak"
+source = "sneak.rs"
+
+[[injection]]
+id = "capture-acting-sneak"
+kind = "HEAD"
+target = "horizon_client::game::lan_actions::Game<'_>::enter_guest"
+helper = "sneak_hook.rs"
+bindings = [
+ {name="host",ty="&mut crate::game::lan::LanHost",value="&mut *host"},
+ {name="conn",ty="u32",value="conn"},
+]
